@@ -1,4 +1,6 @@
 ML Hackathon
+
+
 Diabetes Prediction Web App (Ideathon 2025)
 Overview
 This project is a machine learning-based web application that predicts whether a patient has diabetes or not. The model uses the Random Forest algorithm, optimized with Jades Algorithm, and generates a doctor's report in PDF format.
