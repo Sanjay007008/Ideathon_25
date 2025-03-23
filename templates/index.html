@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction & Optic Disc Localization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-image: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        input {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4), 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-poppins text-white animate-fade-in">
+    <div class="flex justify-center items-center min-h-screen p-4">
+        <div class="glass w-full max-w-2xl rounded-2xl shadow-2xl p-8 transition-transform duration-300 hover:scale-105">
+            <h1 class="text-3xl font-bold text-center mb-8">Diabetes Prediction & Optic Disc Localization</h1>
+            
+            <form action="/" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label for="patient_name" class="block font-semibold text-sm mb-2">Patient Name</label>
+                        <input type="text" id="patient_name" name="patient_name" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white placeholder-white/70 focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                    <div>
+                        <label for="file" class="block font-semibold text-sm mb-2">Upload Retinal Image</label>
+                        <input type="file" id="file" name="file" accept=".png, .jpg, .jpeg" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-500 file:text-white hover:file:bg-blue-600 file:shadow-md file:transition-all file:duration-300 border border-white/20 hover:border-white/40">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label for="pregnancies" class="block font-semibold text-sm mb-2">Pregnancies</label>
+                        <input type="number" id="pregnancies" name="pregnancies" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                    <div>
+                        <label for="glucose" class="block font-semibold text-sm mb-2">Glucose</label>
+                        <input type="number" id="glucose" name="glucose" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label for="blood_pressure" class="block font-semibold text-sm mb-2">Blood Pressure</label>
+                        <input type="number" id="blood_pressure" name="blood_pressure" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                    <div>
+                        <label for="skin_thickness" class="block font-semibold text-sm mb-2">Skin Thickness</label>
+                        <input type="number" id="skin_thickness" name="skin_thickness" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label for="insulin" class="block font-semibold text-sm mb-2">Insulin</label>
+                        <input type="number" id="insulin" name="insulin" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                    <div>
+                        <label for="bmi" class="block font-semibold text-sm mb-2">BMI</label>
+                        <input type="number" id="bmi" name="bmi" step="0.1" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label for="diabetes_pedigree" class="block font-semibold text-sm mb-2">Diabetes Pedigree Function</label>
+                        <input type="number" id="diabetes_pedigree" name="diabetes_pedigree" step="0.01" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                    <div>
+                        <label for="age" class="block font-semibold text-sm mb-2">Age</label>
+                        <input type="number" id="age" name="age" required
+                            class="w-full bg-white/30 rounded-xl p-4 text-white focus:bg-white/40 focus:outline-none border border-white/20 hover:border-white/40">
+                    </div>
+                </div>
+
+                <button type="submit" 
+                    class="w-full mt-8 py-4 px-6 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl font-bold text-lg shadow-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    Generate Report
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
