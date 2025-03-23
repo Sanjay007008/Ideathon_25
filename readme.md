@@ -16,13 +16,3 @@ Report Generation: PDF output for doctor's review
 
 Prediction Output: "Diabetes" or "No Diabetes"
 
-Tech Stack
-Frontend: [React / HTML + CSS + JavaScript] (Modify if needed)
-
-Backend: Flask / Django (Modify if applicable)
-
-Machine Learning: Python (Scikit-Learn, Pandas, NumPy)
-
-Database: SQLite / PostgreSQL (If applicable)
-
-Deployment: Docker / AWS / Heroku (Mention if applicable)
